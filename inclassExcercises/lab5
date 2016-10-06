@@ -1,0 +1,49 @@
+let findQuadrant (p:int*int) =
+  let (x,y) = p in
+  if (sign(x) >0 && sign(y) >=0) then 1
+  else if (sign(x) >=0 && sign(y) <0 ) then 4
+  else if (sign(x) <=0 && sign(y)>0) then 2
+  else if (sign(x)<0 && sign(y)<=0) then 3
+  else 1;;
+  
+type cart_comp = {x:float ; y:float};;
+type pol_comp = {r:float ; theta:float};;
+
+let check_polar (c:pol_comp) =
+if (c.r == 0. || c.theta == 0. || c.theta == 180.) then "real"
+else if (c.theta == 90. || c.theta == 270.) then "imaginary"
+else "mixed";;
+
+let cartToPol (c:cart_comp) = 
+let radius = sqrt( c.x ** 2. +. c.y ** 2.) in
+let t = atan;;
+
+type vertex = float * float * float;;
+
+type triangle = { a:vertex ; b:vertex ; c:vertex };;
+
+let distance (a:vertex ) (b:vertex ) = 
+let (x1,y1,z1) = a in
+let (x2,y2,z2) = b in
+sqrt((x1-.x2) ** 2. +. (y1-.y2) ** 2. +. (z1-.z2) ** 2.);;
+
+distance (0. , 0. , 0.) (1. , 1. ,0.);;
+
+let triangle_type (t:triangle) =
+let ab = distance (t.a) (t.b) in
+let ac = distance (t.a) (t.c) in
+let bc = distance (t.c) (t.b) in
+
+if (ab == ac && ab==bc) then "equilateral"
+else if( ab == ac || ab == bc || ac == bc) then "isosceles"
+else "scalene";;
+
+
+
+
+------------------------quiz_test---------
+let c1 = {grade = 4 ; section = 'A'};;
+let c2 = {grade = 5 ; section = 'B'};;
+
+let s1 = {name = "asdfs" ; classroom = c1};;
+let s2 = {name = "afdshhfhgdf" ; classroom = c2};;

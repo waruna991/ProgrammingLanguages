@@ -1,0 +1,7 @@
+type classroom = { grade:int ; section:char};;
+
+type student = { name:string ; classroom:classroom};;
+
+let same_grade (s1:student) (s2:student) :bool =
+s1.classroom.grade == s2.classroom.grade;;
+

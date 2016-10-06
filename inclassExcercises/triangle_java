@@ -1,0 +1,13 @@
+class Triangle{
+Vertex a, b, c;
+
+
+}
+
+class Vertex{
+double x, y, z;
+
+	double length(){
+		
+	}
+}
